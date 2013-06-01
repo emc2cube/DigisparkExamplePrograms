@@ -1,4 +1,4 @@
-#/usr/bin/python
+#!/usr/bin/env python2
 
 #
 # Written for PyUSB 1.0 (w/libusb 1.0.3)
@@ -10,10 +10,27 @@
 # Version: 20091021
 #
 
+##
+# Modifications for Archlinux ARM platform. Should probably run with non-ARM Archlinux distributions.
 #
-# Assumes 'UsbStreamDemo1.pde' is loaded on Arduino and 
-# LEDs are present on pins 11, 12 and 13.
+# Author: emc2cube
+# Git repository https://github.com/emc2cube/DigisparkExamplePrograms
 #
+# Install:
+#
+# You must have python2, pip, libusb and webcolors:
+# sudo pacman -Sy python2 python2-pip
+# sudo pip-2.7 install webcolors pyusb
+#
+# Optional:
+#
+# To be able to control the RGB LED as non-root user add this to your UDEV rules and reboot.
+# echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"16c0\", ATTR{idProduct}==\"05df\", MODE:=\"0666\"" | sudo tee /etc/udev/rules.d/85-digispark.rules
+#
+#
+# Assumes 'DigiBlink' is loaded on the board (from DigiArduino app -> Samples -> DigisparkUSB -> DigiBlink) and 
+# LEDs are present on pins 11, 12 and 13 (default for RGBShield)
+##
 
 import usb # 1.0 not 0.4
 
@@ -33,13 +50,9 @@ if __name__ == "__main__":
                                           theDevice.productName,
                                           theDevice.manufacturer)
 
-
-
-
     import sys
     import time
     import webcolors
-
 
     #sequence = [11,12,13]* 20
     #random.shuffle(sequence)
@@ -54,13 +67,8 @@ if __name__ == "__main__":
     else:
         color_list = sys.argv
 
-
-
-
    # while 1:
         #pin = int(pin)
-
-
 
         #if output == "\r":
         #    print line
@@ -68,7 +76,7 @@ if __name__ == "__main__":
         #else:
         #    line += output
         #else:
-    
+
         #    print "Pin response didn't match."
 
     #byte val = sys.argv[1]
@@ -95,6 +103,3 @@ if __name__ == "__main__":
         #time.sleep(2)
 
     #print
-    
-                                
-

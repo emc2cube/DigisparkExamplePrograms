@@ -1,3 +1,12 @@
+#!/usr/bin/env python2
+
+##
+# Modifications for Archlinux ARM platform. Should probably run with non-ARM Archlinux distributions.
+#
+# Author: emc2cube
+# Git repository https://github.com/emc2cube/DigisparkExamplePrograms
+##
+
 import sys
 import time
 import urllib2
